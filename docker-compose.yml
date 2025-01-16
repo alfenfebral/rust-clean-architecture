@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  surrealdb:
+    image: surrealdb/surrealdb:latest
+    container_name: surrealdb
+    ports:
+      - "8000:8000" # Port mapping for the web and REST API
+    environment:
+      SURREAL_USER: root # Admin username
+      SURREAL_PASS: root # Admin password
+    command: start --log debug --user root --pass root memory
+    restart: unless-stopped
