@@ -2,11 +2,15 @@ use axum::http::{
         header::{ACCEPT, AUTHORIZATION, CONTENT_TYPE},
         HeaderValue, Method,
     };
+use dotenv::dotenv;
 use tower_http::cors::CorsLayer;
-use clean_architecture::{api::router::create_router, infrastructure::surreal::mongo_context::connect_db};
+use clean_architecture::{api::router::create_router, infrastructure::surreal::surreal_context::connect_db};
 
 #[tokio::main]
 async fn main() {
+    // load environments from .env
+    dotenv().ok();
+
     connect_db().await.unwrap();
     
     let cors = CorsLayer::new()

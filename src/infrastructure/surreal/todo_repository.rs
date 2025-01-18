@@ -1,6 +1,6 @@
 use surrealdb::{error::Db::Thrown, Error};
 
-use crate::{infrastructure::surreal::mongo_context::DB, entities::todo::Todo};
+use crate::{infrastructure::surreal::surreal_context::DB, entities::todo::Todo};
 
 pub struct TodoRepository {
     table: String,
